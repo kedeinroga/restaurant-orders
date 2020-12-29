@@ -1,31 +1,8 @@
 Rails.application.routes.draw do
-  get 'orders/index'
-  get 'orders/edit'
-  get 'orders/update'
-  get 'orders/new'
-  get 'orders/create'
-  get 'orders/show'
-  get 'orders/destroy'
-  get 'ingredients/index'
-  get 'ingredients/edit'
-  get 'ingredients/update'
-  get 'ingredients/new'
-  get 'ingredients/create'
-  get 'ingredients/show'
-  get 'ingredients/destroy'
-  get 'dishes/index'
-  get 'dishes/edit'
-  get 'dishes/update'
-  get 'dishes/new'
-  get 'dishes/create'
-  get 'dishes/show'
-  get 'dishes/destroy'
-  get 'clients/index'
-  get 'clients/edit'
-  get 'clients/update'
-  get 'clients/new'
-  get 'clients/create'
-  get 'clients/show'
-  get 'clients/destroy'
+  root 'orders#index'
+  resources :orders
+  resources :ingredients
+  resources :dishes
+  resources :clients
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
