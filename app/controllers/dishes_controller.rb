@@ -12,6 +12,8 @@ class DishesController < ApplicationController
 
   def update
     @dish = Dish.find(params[:id])
+    @ingredient = Ingredient.find(params[:ingredient_id])
+    @dish.ingredients << @ingredient
     if @dish.update(dish_params)
       redirect_to dishes_path @dish
     else
@@ -24,8 +26,11 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new(dish_params)
-
+    new_params = dish_params.reject { |c, _v| c == "ingredient_id" }
+    @dish = Dish.new(new_params)   
+    @ingredient_id = dish_params["ingredient_id"]
+    ingredient = Ingredient.find(@ingredient_id)
+    @dish.ingredients << ingredient
     if @dish.save
       redirect_to dishes_path @dish
     else
@@ -47,6 +52,6 @@ class DishesController < ApplicationController
   private
 
   def dish_params
-    params.require(:dish).permit(:name, :price)
+    params.require(:dish).permit( :name, :price, ingredient_id: [] )
   end
 end
