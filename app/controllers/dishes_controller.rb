@@ -5,9 +5,16 @@ class DishesController < ApplicationController
   end
 
   def edit
+    @dish = Dish.find(params[:id])
   end
 
   def update
+    @dish = Dish.find(params[:id])
+    if @dish.update(dish_params)
+      redirect_to dishes_path @dish
+    else
+      render 'edit'
+    end
   end
 
   def new
