@@ -9,17 +9,26 @@
     <% end %>
   </div>
 
-  <div class = "form-title form-content__margin">
-    <%= form.label :name, class: 'form-content-label' %>
+  <div>
+    <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class = "form-price form-content__margin">
-    <%= form.label :price, class: 'form-content-label' %>
+  <div>
+    <%= form.label :price %>
     <%= form.number_field :price %>
   </div>
 
-  <div class = "form-submit-button">
-    <%= form. submit class: 'imput-submit' %> 
+  <%
+=begin%>
+ <div>
+  <%= form.label :ingredient_id, 'ingredient' %>
+  <%= form.collection_select :ingredient_id, ingredient.all, :id, :name, { selected: @ingredient_id } %>
+  </div> 
+<%
+=end%>
+
+  <div>
+    <%= form. submit %> 
   </div>
 <% end %>
