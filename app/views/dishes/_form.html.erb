@@ -21,7 +21,7 @@
 
   <div>
     <%= form.label :ingredient_id %>
-    <%= form.collection_select :ingredient_id, Ingredient.all, :id, :name, { prompt: "Seleccione los ingredientes", selected: @ingredient_id, include_hidden: false }, {:multiple => true} %>
+    <%= form.collection_select :ingredient_id, Ingredient.all, :id, :name, { selected: @ingredient_id, include_hidden: false }, {:multiple => true} %>
   </div>
 
   <div>
