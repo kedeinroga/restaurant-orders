@@ -1,0 +1,20 @@
+<%=form_with model: @ingredient, local: true do |form| %>
+  <div class = "form-erros">
+    <% if @ingredient.errors.any? %>
+    <ul>
+      <% @ingredient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form. submit %> 
+  </div>
+<% end %>
