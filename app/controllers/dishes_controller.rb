@@ -29,15 +29,8 @@ class DishesController < ApplicationController
   end
 
   def destroy
-    # @dish = Dish.find(params[:id])
-    # @dish.destroy
-
-    ingredient = Ingredient.find(params[:ingredient][:id])
-    dish = ingredient.categories.find(params[:dish][:id])
-
-    if dish
-      ingredient.categories.delete(dish)
-    end
+    @dish = Dish.find(params[:id])
+    @dish.destroy
 
     redirect_to dishes_path
   end
