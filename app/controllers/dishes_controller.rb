@@ -11,9 +11,17 @@ class DishesController < ApplicationController
   end
 
   def new
+    @dish = Dish.new
   end
 
   def create
+    @dish = Dish.new(dish_params)
+
+    if @dish.save
+      redirect_to dishes_path @dish
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -21,5 +29,11 @@ class DishesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def dish_params
+    params.require(:dish).permit(:name, :price)
   end
 end
