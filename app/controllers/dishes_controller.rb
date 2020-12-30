@@ -1,5 +1,7 @@
 class DishesController < ApplicationController
+  # GET /dishes
   def index
+    @dishes = Dish.all
   end
 
   def edit

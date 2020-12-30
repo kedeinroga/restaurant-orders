@@ -1,2 +1,9 @@
-<h1>Dishes#index</h1>
-<p>Find me in app/views/dishes/index.html.erb</p>
+<h1>Menu</h1>
+<h2>Lista de todos los platos</h2>
+<%= link_to  "Nuevo plato", new_dish_path %>
+<% @dishes.each do |dish| %>
+<p><%= dish.name %></p>
+<p><%= dish.price %></p>
+<%= link_to  "Editar", edit_dish_path(dish) %>
+<%= link_to "Borrar", dish_path(dish), method: :delete, data:{confirm:"Are you sure?"}%>
+<% end %>
