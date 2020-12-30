@@ -2,8 +2,8 @@
 <h2>Lista de todos los platos</h2>
 <%= link_to  "Nuevo plato", new_dish_path %>
 <% @dishes.each do |dish| %>
-<p><%= dish.name %></p>
-<p><%= dish.price %></p>
+<p><%= link_to  dish.name, dish_path(dish) %></p>
+<p>Precio: <%= dish.price %></p>
 <%= link_to  "Editar", edit_dish_path(dish) %>
 <%= link_to "Borrar", dish_path(dish), method: :delete, data:{confirm:"Are you sure?"}%>
 <% end %>
