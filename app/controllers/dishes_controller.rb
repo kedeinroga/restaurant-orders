@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DishesController < ApplicationController
   # GET /dishes
   def index

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateJoinTableDishOrderClient < ActiveRecord::Migration[6.1]
   def change
     create_join_table :orders, :clients do |t|

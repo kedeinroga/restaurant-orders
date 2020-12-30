@@ -19,14 +19,10 @@
     <%= form.number_field :price %>
   </div>
 
-  <%
-=begin%>
- <div>
-  <%= form.label :ingredient_id, 'ingredient' %>
-  <%= form.collection_select :ingredient_id, ingredient.all, :id, :name, { selected: @ingredient_id } %>
-  </div> 
-<%
-=end%>
+  <div>
+    <%= form.label :ingredient_id, 'ingredient' %>
+    <%= form.collection_select :ingredient_id, ingredient.all, :id, :name, { selected: @ingredient_id } %>
+  </div>
 
   <div>
     <%= form. submit %> 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateJoinTableDishIngredient < ActiveRecord::Migration[6.1]
   def change
     create_join_table :dishes, :ingredients do |t|
