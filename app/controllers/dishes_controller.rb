@@ -11,10 +11,12 @@ class DishesController < ApplicationController
   end
 
   def update
+    new_params = dish_params.reject { |c, _v| c == "ingredient_id" }
     @dish = Dish.find(params[:id])
-    @ingredient = Ingredient.find(params[:ingredient_id])
+    @ingredient_id = dish_params["ingredient_id"]
+    @ingredient = Ingredient.find(@ingredient_id)
     @dish.ingredients << @ingredient
-    if @dish.update(dish_params)
+    if @dish.update(new_params)
       redirect_to dishes_path @dish
     else
       render 'edit'
@@ -29,8 +31,8 @@ class DishesController < ApplicationController
     new_params = dish_params.reject { |c, _v| c == "ingredient_id" }
     @dish = Dish.new(new_params)   
     @ingredient_id = dish_params["ingredient_id"]
-    ingredient = Ingredient.find(@ingredient_id)
-    @dish.ingredients << ingredient
+    @ingredient = Ingredient.find(@ingredient_id)
+    @dish.ingredients << @ingredient
     if @dish.save
       redirect_to dishes_path @dish
     else
