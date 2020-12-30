@@ -20,8 +20,12 @@
   </div>
 
   <div>
-    <%= form.label :ingredient_id, 'ingredient' %>
-    <%= form.collection_select :ingredient_id, ingredient.all, :id, :name, { selected: @ingredient_id } %>
+    <%= form.label :ingredient_id %>
+    <%= form.collection_select :ingredient_id, Ingredient.all, :id, :name, { selected: @ingredient_id }, {:multiple => true} %>
+  </div>
+
+  <div>
+    <%= link_to  "Nuevo ingrediente", new_ingredient_path %>
   </div>
 
   <div>
