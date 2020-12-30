@@ -1,6 +1,7 @@
 <h1>Menu</h1>
 <h2>Lista de todos los platos</h2>
 <%= link_to  "Nuevo plato", new_dish_path %>
+<%= link_to  "Atras", root_path %>
 <% @dishes.each do |dish| %>
 <p><%= link_to  dish.name, dish_path(dish) %></p>
 <p>Precio: <%= dish.price %></p>
