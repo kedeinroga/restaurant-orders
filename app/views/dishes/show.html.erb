@@ -1,2 +1,8 @@
 <h2><%= @dish.name %></h2>
+<p>Ingredientes:</p>
+<ul>
+<% @dish.ingredients.each do |ingredient| %>
+ <li><%= ingredient.name %></li>
+ <% end %>
+</ul>
 <%= link_to  "Atras", dishes_path %>
