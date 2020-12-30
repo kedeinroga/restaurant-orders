@@ -1,9 +1,18 @@
 # frozen_string_literal: true
 
 class IngredientsController < ApplicationController
-  def edit; end
+  def edit
+    @ingredient = Ingredient.find(params[:id])
+  end
 
-  def update; end
+  def update
+    @ingredient = Ingredient.find(params[:id])
+    if @ingredient.update(ingredient_params)
+      redirect_to root_path @ingredient
+    else
+      render 'edit'
+    end
+  end
 
   def new
     @ingredient = Ingredient.new
