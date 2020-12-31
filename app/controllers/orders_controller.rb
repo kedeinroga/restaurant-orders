@@ -5,15 +5,47 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
-  def edit; end
+  def edit
+    @order = Order.find(params[:id])
+  end
 
-  def update; end
+  def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      redirect_to root_path @order
+    else
+      render 'edit'
+    end
+  end
 
-  def new; end
+  def new
+    @order = Order.new
+  end
 
-  def create; end
+  def create
+    @order = Order.new(order_params)
 
-  def show; end
+    if @order.save
+      redirect_to root_path @order
+    else
+      render 'new'
+    end
+  end
 
-  def destroy; end
+  def show
+    @order = Order.find(params[:id])
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+
+    redirect_to root_path
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:room, :table, :dish_id)
+  end
 end
